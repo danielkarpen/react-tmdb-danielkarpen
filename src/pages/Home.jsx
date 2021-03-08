@@ -1,7 +1,7 @@
 import { Main } from "components";
 
 const Home = () => {
-  return <Main></Main>;
+  return <Main>Hello World</Main>;
 };
 
 export default Home;

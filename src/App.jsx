@@ -5,7 +5,7 @@ import { Home } from "./pages";
 // })();
 
 function App() {
-  return <Home></Home>;
+  return <Home />;
 }
 
 export default App;
