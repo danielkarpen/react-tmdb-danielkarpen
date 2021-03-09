@@ -3,15 +3,21 @@ import { Card, Main, SearchBar } from "components";
 import { useEffect, useState } from "react";
 
 function renderCards(movies) {
-  return movies.map(({ title, poster_path, release_date, rating, id }) => (
-    <Card
-      title={title}
-      path={poster_path}
-      date={release_date}
-      rating={rating}
-      key={id}
-    />
-  ));
+  return movies.map(
+    ({ title, poster_path, release_date, vote_average, id }) => (
+      <Card
+        title={title}
+        path={poster_path}
+        date={new Date(release_date).toLocaleDateString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "2-digit",
+        })}
+        rating={vote_average}
+        key={id}
+      />
+    )
+  );
 }
 
 const Home = () => {
@@ -24,8 +30,13 @@ const Home = () => {
     })();
   }, []);
 
-  function handleSearch(event) {
+  async function handleSearch(event) {
     event.preventDefault();
+    console.log(event.target.elements[0].value);
+    const { results } = await api.index("/search/movie", {
+      query: event.target.elements[0].value,
+    });
+    setMovies(() => results);
   }
 
   return (

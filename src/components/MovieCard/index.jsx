@@ -12,7 +12,8 @@ const Card = ({ title, path, date, rating, id }) => {
           className="cursor-pointer  transform hover:scale-105 duration-75 ease-in-out border-4 border-transparent rounded-xl"
         />
         <figcaption>
-          {date} - {rating}
+          Release Date: {date}
+          Rating: {rating}
         </figcaption>
       </figure>
       <Button txt="More Info" />
