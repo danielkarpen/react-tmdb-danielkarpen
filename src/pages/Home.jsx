@@ -15,6 +15,7 @@ function renderCards(movies) {
         })}
         rating={vote_average}
         key={id}
+        id={id}
       />
     )
   );

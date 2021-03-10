@@ -1,8 +1,8 @@
 import ky from "ky";
 
-const baseUrl = process.env.REACT_APP_API_BASE;
 const apiKey = process.env.REACT_APP_API_KEY;
 const baseParams = { api_key: apiKey, language: "en-US" };
+const baseUrl = process.env.REACT_APP_API_BASE;
 
 const api = {
   index(path = "/movie/popular", params = {}) {
@@ -19,12 +19,12 @@ const api = {
   },
 
   show(id, path = "") {
-    return ky.get(`${baseUrl}/movie${id}${path}`, {
-      searchParams: baseParams,
-    });
+    return ky
+      .get(`${baseUrl}/movie${id}${path}`, {
+        searchParams: baseParams,
+      })
+      .json();
   },
 };
 
 export default api;
-
-// endpoint = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
