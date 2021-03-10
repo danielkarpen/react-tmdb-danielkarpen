@@ -33,7 +33,7 @@ const Home = () => {
   async function handleSearch(event) {
     event.preventDefault();
     console.log(event.target.elements[0].value);
-    const { results } = await api.index("/search/movie", {
+    const { results } = await api.index("/search/movie/", {
       query: event.target.elements[0].value,
     });
     setMovies(() => results);
